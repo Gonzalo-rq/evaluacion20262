@@ -1,31 +1,134 @@
-html {
-  font-size: 14px;
-}
-
-@media (min-width: 768px) {
-  html {
-    font-size: 16px;
-  }
-}
-
-.btn:focus, .btn:active:focus, .btn-link.nav-link:focus, .form-control:focus, .form-check-input:focus {
-  box-shadow: 0 0 0 0.1rem white, 0 0 0 0.25rem #258cfb;
-}
-
-html {
-  position: relative;
-  min-height: 100%;
+﻿:root {
+    --color-navy: #0f2b48;
+    --color-navy-dark: #091b2e;
+    --color-navy-light: #1c4b79;
+    --color-flame: #ff6b35;
+    --color-flame-hover: #e85924;
+    --color-flame-light: #ffa17a;
+    --color-bg-page: #f4f6f9;
+    --color-card-border: #e2e8f0;
+    --color-text-main: #2d3748;
+    --color-text-muted: #64748b;
+    --font-primary: 'Plus Jakarta Sans', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
 }
 
 body {
-  margin-bottom: 60px;
+    font-family: var(--font-primary);
+    background-color: var(--color-bg-page);
+    color: var(--color-text-main);
+    letter-spacing: -0.01em;
 }
 
-.form-floating > .form-control-plaintext::placeholder, .form-floating > .form-control::placeholder {
-  color: var(--bs-secondary-color);
-  text-align: end;
+/* Navbar */
+.bg-navy {
+    background-color: var(--color-navy) !important;
+    background-image: linear-gradient(135deg, #0f2b48 0%, #173d66 100%);
 }
 
-.form-floating > .form-control-plaintext:focus::placeholder, .form-floating > .form-control:focus::placeholder {
-  text-align: start;
+.brand-badge {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 38px;
+    height: 38px;
+    background: rgba(255, 107, 53, 0.15);
+    border-radius: 10px;
+    border: 1px solid rgba(255, 107, 53, 0.3);
+}
+
+.text-flame {
+    color: var(--color-flame) !important;
+}
+
+.text-flame-light {
+    color: var(--color-flame-light) !important;
+}
+
+.btn-flame {
+    background-color: var(--color-flame);
+    border-color: var(--color-flame);
+    color: #ffffff;
+    font-weight: 600;
+    transition: all 0.2s ease-in-out;
+}
+
+.btn-flame:hover, .btn-flame:focus {
+    background-color: var(--color-flame-hover);
+    border-color: var(--color-flame-hover);
+    color: #ffffff;
+    transform: translateY(-1px);
+    box-shadow: 0 4px 12px rgba(255, 107, 53, 0.35);
+}
+
+/* Cards */
+.card-custom {
+    border: 1px solid var(--color-card-border);
+    border-radius: 16px;
+    background: #ffffff;
+    box-shadow: 0 4px 20px -2px rgba(15, 43, 72, 0.06);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.card-custom-header {
+    background: linear-gradient(to right, #f8fafc, #ffffff);
+    border-bottom: 1px solid var(--color-card-border);
+    padding: 1.25rem 1.75rem;
+    border-radius: 16px 16px 0 0;
+}
+
+/* Forms */
+.form-label {
+    font-weight: 600;
+    font-size: 0.9rem;
+    color: var(--color-navy);
+    margin-bottom: 0.4rem;
+}
+
+.form-control, .form-select {
+    border-radius: 10px;
+    border: 1.5px solid #cbd5e1;
+    padding: 0.65rem 1rem;
+    font-size: 0.95rem;
+    transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+}
+
+.form-control:focus, .form-select:focus {
+    border-color: var(--color-flame);
+    box-shadow: 0 0 0 0.25rem rgba(255, 107, 53, 0.18);
+}
+
+/* Badges */
+.badge-service-fuga {
+    background-color: #fee2e2;
+    color: #b91c1c;
+    border: 1px solid #fca5a5;
+}
+
+.badge-service-instalacion {
+    background-color: #e0f2fe;
+    color: #0369a1;
+    border: 1px solid #7dd3fc;
+}
+
+.badge-service-mantenimiento {
+    background-color: #dcfce7;
+    color: #15803d;
+    border: 1px solid #86efac;
+}
+
+.badge-service-revision {
+    background-color: #fef3c7;
+    color: #b45309;
+    border: 1px solid #fde68a;
+}
+
+/* Badges Base */
+.badge-pill-custom {
+    padding: 0.45em 0.85em;
+    font-weight: 600;
+    border-radius: 50rem;
+    font-size: 0.82rem;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.35rem;
 }
