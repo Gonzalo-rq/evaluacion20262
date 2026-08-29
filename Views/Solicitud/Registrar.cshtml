@@ -1,0 +1,152 @@
+﻿@model TecnoGasHogar.Models.SolicitudServicio
+
+@{
+    ViewData["Title"] = "Registro de Solicitud de Servicio";
+}
+
+<div class="row justify-content-center">
+    <div class="col-lg-8 col-md-10">
+
+        <!-- Alertas de Notificación -->
+        @if (TempData["MensajeExito"] != null)
+        {
+            <div class="alert alert-success alert-dismissible fade show shadow-sm border-0 d-flex align-items-center mb-4" role="alert">
+                <i class="bi bi-check-circle-fill fs-4 me-3 text-success"></i>
+                <div class="flex-grow-1">
+                    <strong>¡Registro Exitoso!</strong>
+                    <div>@TempData["MensajeExito"]</div>
+                </div>
+                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+            </div>
+        }
+
+        @if (TempData["MensajeError"] != null)
+        {
+            <div class="alert alert-danger alert-dismissible fade show shadow-sm border-0 d-flex align-items-center mb-4" role="alert">
+                <i class="bi bi-exclamation-triangle-fill fs-4 me-3 text-danger"></i>
+                <div class="flex-grow-1">
+                    <strong>Atención:</strong>
+                    <div>@TempData["MensajeError"]</div>
+                </div>
+                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+            </div>
+        }
+
+        <!-- Tarjeta del Formulario -->
+        <div class="card card-custom">
+            <div class="card-custom-header d-flex align-items-center justify-content-between">
+                <div class="d-flex align-items-center gap-3">
+                    <div class="brand-badge">
+                        <i class="bi bi-tools text-flame fs-5"></i>
+                    </div>
+                    <div>
+                        <h4 class="mb-0 fw-bold text-navy">Registrar Solicitud Técnica</h4>
+                        <small class="text-muted">Ingrese los datos para agendar la atención técnica en gas doméstico</small>
+                    </div>
+                </div>
+                <span class="badge bg-light text-dark border">Paso 1 de 1</span>
+            </div>
+
+            <div class="card-body p-4 p-md-5">
+                <form asp-action="Registrar" method="post" novalidate>
+                    <div asp-validation-summary="ModelOnly" class="alert alert-danger mb-4" role="alert"></div>
+
+                    <div class="row g-3 mb-3">
+                        <!-- Campo Cliente -->
+                        <div class="col-md-6">
+                            <label asp-for="Cliente" class="form-label">
+                                <i class="bi bi-person-fill text-muted me-1"></i> Nombre del Cliente <span class="text-danger">*</span>
+                            </label>
+                            <input asp-for="Cliente" class="form-control" placeholder="Ej. Juan Pérez Ramos" autofocus />
+                            <span asp-validation-for="Cliente" class="text-danger small mt-1 d-block"></span>
+                        </div>
+
+                        <!-- Campo Teléfono -->
+                        <div class="col-md-6">
+                            <label asp-for="Telefono" class="form-label">
+                                <i class="bi bi-telephone-fill text-muted me-1"></i> Teléfono de Contacto <span class="text-danger">*</span>
+                            </label>
+                            <input asp-for="Telefono" type="tel" class="form-control" placeholder="Ej. 987654321" />
+                            <span asp-validation-for="Telefono" class="text-danger small mt-1 d-block"></span>
+                        </div>
+                    </div>
+
+                    <div class="row g-3 mb-3">
+                        <!-- Campo Distrito -->
+                        <div class="col-md-6">
+                            <label asp-for="Distrito" class="form-label">
+                                <i class="bi bi-geo-alt-fill text-muted me-1"></i> Distrito (Lima Metropolitana) <span class="text-danger">*</span>
+                            </label>
+                            <select asp-for="Distrito" class="form-select">
+                                <option value="">-- Seleccione un Distrito --</option>
+                                <option value="Ate">Ate</option>
+                                <option value="Barranco">Barranco</option>
+                                <option value="Breña">Breña</option>
+                                <option value="Chorrillos">Chorrillos</option>
+                                <option value="Comas">Comas</option>
+                                <option value="Jesús María">Jesús María</option>
+                                <option value="La Molina">La Molina</option>
+                                <option value="La Victoria">La Victoria</option>
+                                <option value="Lince">Lince</option>
+                                <option value="Los Olivos">Los Olivos</option>
+                                <option value="Magdalena del Mar">Magdalena del Mar</option>
+                                <option value="Miraflores">Miraflores</option>
+                                <option value="Pueblo Libre">Pueblo Libre</option>
+                                <option value="San Borja">San Borja</option>
+                                <option value="San Isidro">San Isidro</option>
+                                <option value="San Juan de Lurigancho">San Juan de Lurigancho</option>
+                                <option value="San Juan de Miraflores">San Juan de Miraflores</option>
+                                <option value="San Luis">San Luis</option>
+                                <option value="San Martin de Porres">San Martín de Porres</option>
+                                <option value="San Miguel">San Miguel</option>
+                                <option value="Santiago de Surco">Santiago de Surco</option>
+                                <option value="Surquillo">Surquillo</option>
+                                <option value="Villa El Salvador">Villa El Salvador</option>
+                                <option value="Villa María del Triunfo">Villa María del Triunfo</option>
+                            </select>
+                            <span asp-validation-for="Distrito" class="text-danger small mt-1 d-block"></span>
+                        </div>
+
+                        <!-- Campo Tipo de Servicio -->
+                        <div class="col-md-6">
+                            <label asp-for="TipoServicio" class="form-label">
+                                <i class="bi bi-tag-fill text-muted me-1"></i> Tipo de Servicio <span class="text-danger">*</span>
+                            </label>
+                            <select asp-for="TipoServicio" class="form-select">
+                                <option value="">-- Seleccione Tipo de Servicio --</option>
+                                <option value="Instalación">Instalación</option>
+                                <option value="Mantenimiento">Mantenimiento</option>
+                                <option value="Revisión">Revisión</option>
+                                <option value="Fuga">Fuga (Urgencia)</option>
+                            </select>
+                            <span asp-validation-for="TipoServicio" class="text-danger small mt-1 d-block"></span>
+                        </div>
+                    </div>
+
+                    <!-- Campo Descripción -->
+                    <div class="mb-4">
+                        <label asp-for="Descripcion" class="form-label">
+                            <i class="bi bi-chat-left-text-fill text-muted me-1"></i> Descripción del Servicio o Falla (Opcional)
+                        </label>
+                        <textarea asp-for="Descripcion" class="form-control" rows="3" placeholder="Ej. Instalación de terma a gas Bosch de 10L, cliente solicita visita en horario de mañana..."></textarea>
+                        <span asp-validation-for="Descripcion" class="text-danger small mt-1 d-block"></span>
+                    </div>
+
+                    <div class="d-flex flex-column flex-sm-row gap-2 justify-content-end pt-3 border-top">
+                        <a asp-action="Listado" class="btn btn-outline-secondary px-4 py-2 rounded-pill">
+                            <i class="bi bi-arrow-left me-1"></i> Ver Listado
+                        </a>
+                        <button type="submit" class="btn btn-flame px-5 py-2 rounded-pill shadow-sm">
+                            <i class="bi bi-check2-circle me-1"></i> Guardar Solicitud
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

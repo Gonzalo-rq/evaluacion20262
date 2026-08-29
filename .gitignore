@@ -1,0 +1,32 @@
+﻿## .NET Core / ASP.NET Core
+bin/
+obj/
+*.user
+*.userosscache
+*.sln.docstates
+
+## Visual Studio / VS Code
+.vs/
+.vscode/
+*.suo
+*.userprefs
+
+## Build results
+[Dd]ebug/
+[Rr]elease/
+
+## Database
+*.db
+*.db-shm
+*.db-wal
+*.sqlite
+*.sqlite3
+*.sqlite-journal
+
+## Documents / Temp
+*.docx
+*.log
+
+## OS generated files
+.DS_Store
+Thumbs.db
